@@ -1,174 +1,130 @@
 {% extends 'layout.html' %}
 
 {% block title %}
-    Settings
+Settings
 {% endblock %}
 
 {% block main %}
-    
-    <div class="container-lg py-2 px-5 mt-3 fade-in-up  ">
 
-        <div class="my-3 pb-3">
-            <h3 class="fw-bold">Update your Account Information<span class="noto-fire ms-2">🖋️</span></h3>
-        </div>
+<div class="container-lg py-2 px-5 mt-3 fade-in-up  ">
 
-        <div>
-            <div class="row justify-content-between">
-                <div class="col-md-4">
-                    <ul class="nav nav-tabs rounded-left" role="tablist">
-                        <li class="nav-item col-12" role="presentation">
-                            <div 
-                            
-                            {% if active_tab == 'name' %}
-                                class="p-3 tab-clickable active fw-bold"
-                            {% else %}
-                                class="p-3 tab-clickable fw-bold"
-                            {% endif %}
+    <div class="my-3 pb-3">
+        <h3 class="fw-bold">Update your Account Information<span class="noto-fire ms-2">🖋️</span></h3>
+    </div>
 
-                                role="tab" data-bs-toggle="tab"
-                                data-bs-target="#name" aria-control="name" aria-selected="true">
-                                Edit Name
-                            </div>
-                        </li>
-                        <li class="nav-item col-12" role="presentation">
-                            <div
-                            
-                            {% if active_tab == 'username' %}
-                                class="p-3 tab-clickable active fw-bold"
-                            {% else %}
-                                class="p-3 tab-clickable fw-bold"
-                            {% endif %}
-
-                            role="tab" data-bs-toggle="tab"
-                                data-bs-target="#username" aria-control="username" aria-selected="true">
-                                Update Username
-                            </div>
-                        </li>
-                        <li class="nav-item col-12" role="presentation">
-                            <div 
-                            
-                            {% if active_tab == 'password' %}
-                                class="p-3 tab-clickable active fw-bold"
-                            {% else %}
-                                class="p-3 tab-clickable fw-bold"
-                            {% endif %}
-                            
-                            role="tab" data-bs-toggle="tab"
-                                data-bs-target="#password" aria-control="password" aria-selected="true">
-                                Change Password
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-                <div class="col-md-8">
-                    <form action="/settings" method="POST">
-                        <div class="container">
-                            <div class="tab-content" id="v-pills-tabContent">
-                                <div 
-                                
-                                {% if active_tab == 'name' %}
-                                    class="tab-pane fade show active"
-                                {% else %}
-                                    class="tab-pane fade"
-                                {% endif %}
-                                
-                                id="name" role="tabpanel"
-                                    aria-labelledby="v-pills-home-tab" tabindex="0">
-                                    <div class="px-5 py-4">
-                                        <h5 class="py-3">Current Name :</h5>
-                                        <h4>{{ name }}</h4>
-                                    </div>
-                                    <div class="px-5">
-                                        <input type="text" class="mb-3 border-0 form-control form-control-sm"
-                                            name="change_name" id="change_name" placeholder="Enter new name"
-                                            autofocus autocomplete="off" />
-                                    </div>
-                                    <div>
-                                        <p id="validation" class="mb-3 small text-center fw-light text-muted">{{ message1 }}</p>
-                                    </div>
-                                    <div class="text-center pt-4  pb-5 ">
-                                        <input type="submit" id="submit-name" value="Save Changes"
-                                            class="btn btn-success px-5 fw-bold " />
-                                    </div>
+    <div>
+        <div class="row justify-content-between">
+            <div class="col-md-4">
+                <ul class="nav nav-tabs rounded-left" role="tablist">
+                    <li class="nav-item col-12" role="presentation">
+                        <div {% if active_tab=='name' %} class="p-3 tab-clickable active fw-bold" {% else %}
+                            class="p-3 tab-clickable fw-bold" {% endif %} role="tab" data-bs-toggle="tab"
+                            data-bs-target="#name" aria-control="name" aria-selected="true">
+                            Edit Name
+                        </div>
+                    </li>
+                    <li class="nav-item col-12" role="presentation">
+                        <div {% if active_tab=='username' %} class="p-3 tab-clickable active fw-bold" {% else %}
+                            class="p-3 tab-clickable fw-bold" {% endif %} role="tab" data-bs-toggle="tab"
+                            data-bs-target="#username" aria-control="username" aria-selected="true">
+                            Update Username
+                        </div>
+                    </li>
+                    <li class="nav-item col-12" role="presentation">
+                        <div {% if active_tab=='password' %} class="p-3 tab-clickable active fw-bold" {% else %}
+                            class="p-3 tab-clickable fw-bold" {% endif %} role="tab" data-bs-toggle="tab"
+                            data-bs-target="#password" aria-control="password" aria-selected="true">
+                            Change Password
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-8">
+                <form action="/settings" method="POST">
+                    <div class="container">
+                        <div class="tab-content" id="v-pills-tabContent">
+                            <div {% if active_tab=='name' %} class="tab-pane fade show active" {% else %}
+                                class="tab-pane fade" {% endif %} id="name" role="tabpanel"
+                                aria-labelledby="v-pills-home-tab" tabindex="0">
+                                <div class="px-5 py-4">
+                                    <h5 class="py-3">Current Name :</h5>
+                                    <h4>{{ name }}</h4>
                                 </div>
-                                <div 
-                                
-                                {% if active_tab == 'username' %}
-                                    class="tab-pane fade show active"
-                                {% else %}
-                                    class="tab-pane fade"
-                                {% endif %}
-                                
-                                id="username" role="tabpanel"
-                                    aria-labelledby="v-pills-profile-tab" tabindex="0">
-                                    <div class="px-5 py-4">
-                                        <h5 class="py-3">Current Username :</h5>
-                                        <h4>{{ username }}</h4>
-                                    </div>
-                                    <div class="px-5 ">
-                                        <input type="text" class="mb-3 border-0 form-control form-control-sm"
-                                            name="change_username" id="change_username" placeholder="Enter new username"
-                                            autofocus autocomplete="off"/>
-                                    </div>
-                                    <div>
-                                        <p id="validation" class="mb-3 small text-center fw-light text-muted">{{ message2 }}</p>
-                                    </div>
-                                    <div class="text-center pt-4 pb-5">
-                                        <input type="submit" id="submit-username" value="Save Changes"
-                                            class="btn btn-success px-5 fw-bold" />
-                                    </div>
+                                <div class="px-5">
+                                    <input type="text" class="mb-3 border-0 form-control form-control-sm"
+                                        name="change_name" id="change_name" placeholder="Enter new name" autofocus
+                                        autocomplete="off" />
                                 </div>
-                                <div 
-                                
-                                {% if active_tab == 'password' %}
-                                    class="tab-pane fade show active"
-                                {% else %}
-                                    class="tab-pane fade"
-                                {% endif %}
-                                
-                                id="password" role="tabpanel"
-                                    aria-labelledby="v-pills-disabled-tab" tabindex="0">
-                                    <div class="px-5 pt-3">
-                                        <h5 class="py-3">Current Password :</h5>
-                                    </div>
-                                    <div class="px-5 pt-1 pb-2">
-                                        <input type="password" class="mb-3 border-0 form-control form-control-sm"
-                                            name="old_pass" id="old_pass" placeholder="Enter current password"
-                                            autofocus />
-                                    </div>
-                                    <div class="px-5 pt-2">
-                                        <h5 class="py-3">New Password :</h5>
-                                    </div>
-                                    <div class="px-5 pt-1 pb-2">
-                                        <input type="password" class="mb-3 border-0 form-control form-control-sm"
-                                            name="new_pass" id="new_pass" placeholder="Enter new password" autofocus />
-                                    </div>
-                                    <div class="px-5 pt-2">
-                                        <h5 class="py-3">Confirm New Password :</h5>
-                                    </div>
-                                    <div class="px-5 pt-1 pb-2">
-                                        <input type="password" class="mb-3 border-0 form-control form-control-sm"
-                                            name="confirmation" id="confirmation" placeholder="Confirm new password"
-                                            autofocus />
-                                    </div>
-                                    <div>
-                                        <p id="validation" class="mb-3 small text-center fw-light text-muted">{{ message3 }}</p>
-                                    </div>
-                                    <div class="text-center pt-4 pb-5">
-                                        <input type="submit" id="submit-password" value="Save Changes"
-                                            class="btn btn-success px-5 fw-bold" />
-                                    </div>
+                                <div>
+                                    <p id="validation" class="mb-3 small text-center fw-light text-muted">{{ message1 }}
+                                    </p>
+                                </div>
+                                <div class="text-center pt-4  pb-5 ">
+                                    <input type="submit" id="submit-name" value="Save Changes"
+                                        class="btn btn-success px-5 fw-bold " />
+                                </div>
+                            </div>
+                            <div {% if active_tab=='username' %} class="tab-pane fade show active" {% else %}
+                                class="tab-pane fade" {% endif %} id="username" role="tabpanel"
+                                aria-labelledby="v-pills-profile-tab" tabindex="0">
+                                <div class="px-5 py-4">
+                                    <h5 class="py-3">Current Username :</h5>
+                                    <h4>{{ username }}</h4>
+                                </div>
+                                <div class="px-5 ">
+                                    <input type="text" class="mb-3 border-0 form-control form-control-sm"
+                                        name="change_username" id="change_username" placeholder="Enter new username"
+                                        autofocus autocomplete="off" />
+                                </div>
+                                <div>
+                                    <p id="validation" class="mb-3 small text-center fw-light text-muted">{{ message2 }}
+                                    </p>
+                                </div>
+                                <div class="text-center pt-4 pb-5">
+                                    <input type="submit" id="submit-username" value="Save Changes"
+                                        class="btn btn-success px-5 fw-bold" />
+                                </div>
+                            </div>
+                            <div {% if active_tab=='password' %} class="tab-pane fade show active" {% else %}
+                                class="tab-pane fade" {% endif %} id="password" role="tabpanel"
+                                aria-labelledby="v-pills-disabled-tab" tabindex="0">
+                                <div class="px-5 pt-3">
+                                    <h5 class="py-3">Current Password :</h5>
+                                </div>
+                                <div class="px-5 pt-1 pb-2">
+                                    <input type="password" class="mb-3 border-0 form-control form-control-sm"
+                                        name="old_pass" id="old_pass" placeholder="Enter current password" autofocus />
+                                </div>
+                                <div class="px-5 pt-2">
+                                    <h5 class="py-3">New Password :</h5>
+                                </div>
+                                <div class="px-5 pt-1 pb-2">
+                                    <input type="password" class="mb-3 border-0 form-control form-control-sm"
+                                        name="new_pass" id="new_pass" placeholder="Enter new password" autofocus />
+                                </div>
+                                <div class="px-5 pt-2">
+                                    <h5 class="py-3">Confirm New Password :</h5>
+                                </div>
+                                <div class="px-5 pt-1 pb-2">
+                                    <input type="password" class="mb-3 border-0 form-control form-control-sm"
+                                        name="confirmation" id="confirmation" placeholder="Confirm new password"
+                                        autofocus />
+                                </div>
+                                <div>
+                                    <p id="validation" class="mb-3 small text-center fw-light text-muted">{{ message3 }}
+                                    </p>
+                                </div>
+                                <div class="text-center pt-4 pb-5">
+                                    <input type="submit" id="submit-password" value="Save Changes"
+                                        class="btn btn-success px-5 fw-bold" />
                                 </div>
                             </div>
                         </div>
-                    </form>
-                </div>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
+</div>
 
 {% endblock %}
-
-   
-
-
