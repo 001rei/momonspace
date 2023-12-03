@@ -1,0 +1,56 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+    Register
+{% endblock title %}
+
+{% block main %}
+    
+        <div class="container-lg py-2 px-5 mt-3 fade-in-up">
+
+            <div class="row justify-content-around align-items-center">
+                <div class="col-md-4">
+                    <img class="img-fluid carousel rounded" name="carousel">
+                </div>
+                <div class="col-md-5 px-5 pb-5 pt-4 login rounded p-5 col-xl-4 offset-xl-1  form-login ">
+                    <form action="/register" method="POST">
+                        <div class="mb-3">
+                            <label for="">{{ name }}</label>
+                            <input type="text" autofocus autocomplete="off" id="name" name="name" 
+                                class="form-control" placeholder="Name"  required  />
+                        </div>
+                        <div class="mb-3">
+                            <input type="text" autofocus autocomplete="off" id="username" name="username"
+                                class="form-control" placeholder="Username" required />
+                        </div>
+                        <div class="mb-3">
+                            <input type="password" id="password" name="password" class="form-control"
+                                placeholder="Password" required />
+                        </div>
+                        <div class="mb-3">
+                            <input type="password" id="confirmation" name="confirmation" class="form-control" placeholder="Password Confirmation" required />
+                        </div>
+                        <div class="mb-3 text-center d-grid gap-2">
+                            <input type="submit" id="register" value="Register" class="btn btn-primary px-5" />
+                        </div>
+                        <div class="mb-3 text-center ">
+                            <p id="validation" class="mb-3 small text-center fw-light text-muted">{{ message }}</p>
+                            <p>Already have an account?
+                                <a href="/login">Login.</a>
+                            </p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+
+{% endblock main %}
+
+{% block script %}
+    <script src="/static/js/carousel_login.js"></script>
+{% endblock script %}
+    
+
+
+   

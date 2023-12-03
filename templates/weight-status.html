@@ -1,0 +1,54 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+    Weight Check
+{% endblock  %}
+
+{% block main %}
+    
+        <div class="container-lg py-2 px-5 mt-3 fade-in-up">
+            <div class="my-3 text-center">
+                <h3 class="fw-bold">Check your current weight status<span class="noto-fire">❕</span></h3>
+                <h6 class="fw-bold">Fill out the form below to know your weight status.</h6>
+            </div>
+            <div class="d-lg-flex py-4 justify-content-evenly">
+                <div class="col-md-6 calculator-main rounded">
+                    <form>
+                        <div class="px-5 pt-5 mb-3">
+                            <label for="height" class="form-label fw-bold">Height<span
+                                    class="noto-fire ms-1">📏</span></label>
+                            <input type="number" class="form-control" id="height"
+                                placeholder="Input your heights (cm) here" required>
+                        </div>
+                        <div class="px-5 pb-5 mb-2">
+                            <label for="weight" class="form-label fw-bold">Weight<span
+                                    class="noto-fire ms-1">⚖️</span></label>
+                            <input type="number" class="form-control" id="weight"
+                                placeholder="Input your weights (kg) here" required>
+                        </div>
+                        <div class="px-5 pb-4 mb-3 text-center">
+                            <button type="submit" id="submit" class="btn btn-outline-dark">Check</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-md-3 rounded" id="result-info">
+                    <div class="px-5 pt-5 mb-3" id="container-result">
+                        <h4 id="result"></h4>
+                        <h6>Suggestion/Tips :</h6>
+                        <ol>
+                            <li id="tips-1"></li>
+                            <li id="tips-2"></li>
+                            <li id="tips-3"></li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+{% endblock %}
+
+    
+{% block script %}
+    <script src="/static/js/calculate.js"></script>
+{% endblock  %}
+    

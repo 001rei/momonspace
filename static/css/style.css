@@ -1,0 +1,275 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato&family=Roboto+Slab:wght@700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@900&family=Playfair+Display:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Emoji:wght@500&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Lato', sans-serif;
+}
+
+
+
+:root {
+    --green: #a1b53c;
+    --light-green: #d9ca2e;
+    --brown: #9e700d;
+    --transition: 0.2s ease-in-out;
+}
+
+a {
+    color: var(--green) !important;
+    text-decoration: none !important;
+}
+
+
+
+a:hover,
+a:active {
+    color: var(--light-green) !important;
+    transition: var(--transition) !important;
+}
+
+.active-link {
+    background-color: #f5f5f4 !important;
+    border-radius: 0.5rem;
+    border: 0 !important;
+    transition: var(--transition);
+}
+
+.title {
+    font-family: 'Merriweather', serif;
+}
+
+.navbar-title {
+    font-size: 45px;
+    font-weight: 900;
+}
+
+.navbar-login-title {
+    font-size: 65px;
+    font-weight: 900;
+}
+
+.carousel {
+    background-size: contain;
+    align-self: center;
+    transition: var(--transition);
+}
+
+li {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.active {
+    background-color: #f2efe9 !important;
+    border-radius: 0.5rem;
+    border: 0 !important;
+    transition: var(--transition);
+}
+
+.footer-title {
+    margin-top: 15px;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--green);
+}
+
+.footer-info {
+    font-weight: 600;
+    margin: 10px;
+
+}
+
+.guide-title {
+    text-align: left;
+    font-weight: 900 !important;
+}
+
+.guide-main {
+    background-color: #daebdf;
+}
+
+.calculator-main {
+    background-color: #fcc36d;
+}
+
+.noto-fire {
+    font-family: 'Noto Emoji', sans-serif;
+}
+
+.hide {
+    display: none;
+}
+
+#result-info {
+    display: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    background-color: #b9d1a9;
+}
+
+.about-us {
+    background-color: #fffca6;
+}
+
+.about-us-content {
+    text-align: justify !important;
+    font-size: 18px;
+}
+
+
+.form-login {
+    background-color: #f5f5f5!important;
+    border-radius: 0.25rem;
+    border: 0 !important;
+}
+
+.form-recipe {
+    background-color: #f5f5f5 !important;
+    border-radius: 0.25rem;
+    border: 0 !important;
+}
+
+.form-result {
+    background-color: rgba(245, 245, 245, 0.85);
+    border-radius: 0.25rem;
+    border: 0 !important;
+}
+
+.yellow:hover{
+    background-color: #f0bd46!important;
+    transition: var(--transition);
+}
+
+.yellow{
+    background-color: #f0a243;
+}
+
+hr {
+    height: 3px;
+    width: 90%;
+    margin: 0 auto;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    border-width: 3px;
+    color: var(--brown);
+}
+
+h2 {
+    font-weight: 800;
+}
+
+h4,
+h5 {
+    font-weight: 600;
+    text-align: left;
+
+}
+
+.diet-overview {
+    text-align: justify;
+}
+
+li {
+    font-weight: normal;
+    font-size: 16px;
+    text-align: justify;
+}
+
+li::marker {
+    font-weight: bold;
+
+}
+
+   
+button:hover,
+button:active,
+.field span:hover,
+.field span:active,
+input[type="submit"],
+input[type="submit"]:hover,
+input[type="submit"]:active {
+    background-color: var(--light-green) !important;
+    transition: var(--transition)!important;
+}
+
+input[type="submit"],
+.field span {
+    background-color: var(--green) !important;
+    opacity: 1;
+}
+
+button[type="submit"] {
+    text-align: center;
+    width: 150px;
+    height: 40px;
+}
+
+.field {
+    display: flex;
+}
+
+.field span:last-child {
+    display: none;
+}
+
+
+/* ini dari: https: //jarv.is/notes/css-waving-hand-emoji/*/
+.wave {
+    animation-name: wave-animation;
+    animation-duration: 2.5s;
+    transform-origin: 70% 70%;
+    display: inline-block;
+}
+
+@keyframes wave-animation {
+    0% {
+        transform: rotate(0.0deg)
+    }
+
+    10% {
+        transform: rotate(14.0deg)
+    }
+
+    20% {
+        transform: rotate(-8.0deg)
+    }
+
+    30% {
+        transform: rotate(14.0deg)
+    }
+
+    40% {
+        transform: rotate(-4.0deg)
+    }
+
+    50% {
+        transform: rotate(10.0deg)
+    }
+
+    60% {
+        transform: rotate(0.0deg)
+    }
+
+    100% {
+        transform: rotate(0.0deg)
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in-up {
+    animation: fadeInUp 0.5s ease-in-out;
+}
