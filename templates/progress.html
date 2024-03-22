@@ -1,0 +1,206 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+Progress
+{% endblock %}
+
+{% block main %}
+<div class="container-lg py-2 px-5 mt-3 fade-in-up">
+
+    <div class="my-4 text-left">
+        <h2 class="fw-bold">Hi, {{ name }}
+            <span class="wave noto-fire">👋</span>
+        </h2>
+        <h4 class="pt-2">
+            Did you manage to hit your goals for today?
+            <span class="noto-fire">💪🏻</span>
+        </h4>
+    </div>
+
+    <div class="row justify-content-between">
+        <div class="col-lg-8">
+            <div class="py-3 px-3 progress-box">
+                <form action="/progress" method="POST" id="progressForm">
+                    <div class="row">
+                        <div class="col-lg-6 py-3">
+                            <div class="text-left">
+                                <h3 class="text-center">Today's Session <span>🏋🏻‍♂️</span></h3>
+                            </div>
+                            <div class="px-lg-5 px-sm-0 small d-md-flex d-md-block flex-wrap justify-content-around">
+                                <div class="div flex-column">
+                                    <div class="form-check px-4 py-1 rd">
+                                        <input class="form-check-input" type="checkbox" name="sessionType" value="Back"
+                                            id="back">
+                                        <label class="form-check-label" for="back">Back</label>
+                                    </div>
+                                    <div class="form-check px-4 py-1 rd">
+                                        <input class="form-check-input" type="checkbox" name="sessionType"
+                                            value="Shoulder" id="shoulder">
+                                        <label class="form-check-label" for="shoulder">Shoulder</label>
+                                    </div>
+                                    <div class="form-check px-4 py-1 rd">
+                                        <input class="form-check-input" type="checkbox" name="sessionType" value="Chest"
+                                            id="chest">
+                                        <label class="form-check-label" for="chest">Chest</label>
+                                    </div>
+                                    <div class="form-check px-4 py-1 rd">
+                                        <input class="form-check-input" type="checkbox" name="sessionType"
+                                            value="Cardio" id="cardio">
+                                        <label class="form-check-label" for="cardio">Cardio</label>
+                                    </div>
+                                    <div class="form-check px-4 py-1 rd">
+                                        <input class="form-check-input" type="checkbox" name="sessionType" value="neck"
+                                            id="neck">
+                                        <label class="form-check-label" for="neck">Neck</label>
+                                    </div>
+                                </div>
+
+                                <div class="div flex-column">
+                                    <div class="form-check py-1 rd">
+                                        <input class="form-check-input" type="checkbox" name="sessionType" value="Waist"
+                                            id="waist">
+                                        <label class="form-check-label" for="waist">Waist</label>
+                                    </div>
+                                    <div class="form-check py-1 rd">
+                                        <input class="form-check-input" type="checkbox" name="sessionType"
+                                            value="Upper Arms" id="upperarms">
+                                        <label class="form-check-label" for="upperarms">Upper Arms</label>
+                                    </div>
+                                    <div class="form-check py-1 rd">
+                                        <input class="form-check-input" type="checkbox" name="sessionType"
+                                            value="Upper Legs" id="upperlegs">
+                                        <label class="form-check-label" for="upperlegs">Upper Legs</label>
+                                    </div>
+                                    <div class="form-check py-1 rd">
+                                        <input class="form-check-input" type="checkbox" name="sessionType"
+                                            value="Lower Arms" id="lowerarms">
+                                        <label class="form-check-label" for="lowerarms">Lower Arms</label>
+                                    </div>
+                                    <div class="form-check py-1 rd">
+                                        <input class="form-check-input" type="checkbox" name="sessionType"
+                                            value="Lower Legs" id="lowerlegs">
+                                        <label class="form-check-label" for="lowerlegs">Lower Legs</label>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+                        <div class="col-lg-5 py-3">
+                            <div class="text-left pb-3">
+                                <h3 class="text-center">Session Durations</h3>
+                            </div>
+                            <div class="px-4">
+                                <select class="form-select" aria-label="Default select example" id="sessionDuration"
+                                    name="sessionDuration" required>
+                                    <option selected disabled><span class="noto-fire">⏳</span>Durations</option>
+                                    <option value="30 Minutes">30 Minutes</option>
+                                    <option value="1 hours">1 hours</option>
+                                    <option value="1,5 hours">1,5 hours</option>
+                                    <option value="2 hours">2 hours</option>
+                                    <option value="2,5 hours">2,5 hours</option>
+                                    <option value="3 hours">3 hours</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <hr class="progress-line">
+                    <div class="row px-5">
+                        <div class="d-grid gap-2 pb-3">
+                            <input type="submit" id="submit-name" value="Record" class="btn btn-danger" />
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div style="padding-top: 0% !important;" class="col-lg-4 py-3 ">
+            <div class="pt-5 pb-4 px-3 progress-box">
+                <div class="row justify-content-center pt-5 pb-4 ">
+                    <div class="col-lg-12 pb-2 intake-info">
+                        <div class="d-md-flex justify-content-center">
+                            <h1 class="text-center fw-bold"> {% if sum_calories == None %} 0 {% else %} {{sum_calories}}
+                                {% endif %}
+                                / {{calories}} <small>kcal</small> </h1>
+                        </div>
+                    </div>
+                </div>
+                <div class="row justify-content-center pb-3">
+                    <div class="col-lg-8 pb-5">
+                        <div class="text-center pb-3 mb-2 px-3">
+                            <p class="fs-5 text-center">Today's intake</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row justify-content-between">
+        <div class="col-lg-8 py-3">
+            <div class="pt-3 pb-4 px-3 progress-box">
+                <div class="pt-2 pb-3">
+                    <h3 class="text-center">Your Recent Sessions<span>📆</span></h3>
+                </div>
+                <div class="table-wrapper-scroll-y my-custom-scrollbar">
+                    <table class="table table-bordered table-striped mb-0">
+                        <thead>
+                            <tr>
+                                <th scope="col">Session Type</th>
+                                <th scope="col">Session Duration</th>
+                                <th scope="col">Date</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for data in datas %}
+                            <tr>
+                                <td>{{ data.sessionType }}</td>
+                                <td>{{ data.sessionDuration }}</td>
+                                <td>{{ data.date }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 py-3">
+            <div class="pt-3 pb-4 px-3 progress-box">
+                <div class="text-center py-2 mb-2 px-3">
+                    <h3>Set Today's Intake</h3>
+                </div>
+                <div class="px-3 ">
+                    <form action="/set-intake" method="POST">
+                        <p class="text-center">What's today's program <span class="noto-fire">❔</span></p>
+                        <div class="row justify-content-evenly">
+                            <div class="col-lg-4">
+                                <input type="radio" class="btn-check" id="bulking-radio" name="program" value="3500"
+                                    onclick="changeLabelColor('bulking-label')">
+                                <label class="btn btn-outline-danger" for="bulking-radio"
+                                    id="bulking-label">Bulking</label>
+                            </div>
+                            <div class="col-lg-4">
+                                <input type="radio" class="btn-check" id="cutting-radio" name="program" value="1800"
+                                    onclick="changeLabelColor('cutting-label')">
+                                <label class="btn btn-outline-danger" for="cutting-radio"
+                                    id="cutting-label">Cutting</label>
+                            </div>
+                        </div>
+                        <div class="row py-4">
+                            <div class="d-grid gap-2 pb-3">
+                                <input type="submit" id="submit-name" value="save" class="btn btn-danger btn-sm" />
+                            </div>
+                        </div>
+                        <hr class="progress-line">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock main %}
+
+{% block script %}
+<script src="/static/js/submit_progress.js"></script>
+<script src="/static/js/progress.js"></script>
+<script src="/static/js/set_intake.js"></script>
+{% endblock script %}

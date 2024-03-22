@@ -1,0 +1,68 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+Calorie Needs
+{% endblock %}
+
+{% block main %}
+
+<div class="container-lg py-2 px-5 mt-3 fade-in-up">
+    <div class="my-3 text-center">
+        <h3 class="fw-bold">Check your calorie needs<span class="noto-fire">❕</span></h3>
+        <h6 class="fw-semibold">Fill out the form below to know your calorie needs.</h6>
+    </div>
+    <div class="d-lg-flex py-4 justify-content-evenly">
+        <div class="col-md-6 calculator-main rounded">
+            <form>
+                <div class="px-5 pt-5 mb-3">
+                    <label for="gender" class="form-label fw-bold">Gender<span
+                            class="noto-fire ms-1">♀️♂️</span></label>
+                    <select class="form-control" id="gender">
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                    </select>
+                </div>
+                <div class="px-5 mb-2">
+                    <label for="age" class="form-label fw-bold">Age<span class="noto-fire ms-1">📅</span></label>
+                    <input type="number" class="form-control" id="age" placeholder="Input your heights (cm) here"
+                        required autocomplete="off">
+                </div>
+                <div class="px-5 mb-2">
+                    <label for="height" class="form-label fw-bold">Height<span class="noto-fire ms-1">📏</span></label>
+                    <input type="number" class="form-control" id="height" placeholder="Input your heights (cm) here"
+                        required autocomplete="off">
+                </div>
+                <div class="px-5 mb-2">
+                    <label for="weight" class="form-label fw-bold">Weight<span class="noto-fire ms-1">⚖️</span></label>
+                    <input type="number" class="form-control" id="weight" placeholder="Input your weights (kg) here"
+                        required autocomplete="off">
+                </div>
+                <div class="px-5 pb-5 mb-2">
+                    <label class="form-label fw-bold" for="activity">Activity Level<span
+                            class="noto-fire ms-1">⛹🏻‍♂️</span></label>
+                    <select class="form-control" id="activity">
+                        <option value="1.2">Very Light (Sedentary)</option>
+                        <option value="1.375">Light (Lightly active)</option>
+                        <option value="1.55">Moderate (Moderately active)</option>
+                        <option value="1.725">Active (Very active)</option>
+                        <option value="1.9">Very Active (Extra active)</option>
+                    </select>
+                </div>
+                <div class="px-5 pb-4 mb-3 text-center">
+                    <button type="submit" id="submit" class="btn btn-outline-dark check">Check</button>
+                </div>
+            </form>
+        </div>
+        <div class="col-md-4 rounded" id="result-info" style="height: 150px;">
+            <div class="px-5 pt-5 mb-3" id="container-result">
+                <h4 class="text-light" id="result"></h4>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block script %}
+<script src="/static/js/calculate_intake.js"></script>
+{% endblock %}

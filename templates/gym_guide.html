@@ -1,0 +1,133 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+Gym Guide
+{% endblock %}
+
+{% block main %}
+
+<div class="container-lg py-2 px-5 mt-3 fade-in-up">
+    <div class="my-4 text-left">
+        <h3 class="pt-2 fw-bold">
+            Ready to hit the gym! What's the game plan?
+            <span>😤</span>
+        </h3>
+    </div>
+
+    <div class="form-recipe p-5">
+
+        <div class="row">
+            <div class="py-2">
+                <form action="/result-gym">
+                    <div class="input-group mb-3">
+                        <button class="btn btn-danger" type="submit" id="nameExcercises">Search</button>
+                        <input type="text" class="form-control" placeholder="Search Excersies" name="nameExcercises"
+                            aria-label="Example text with button addon" aria-describedby="button-addon1"
+                            autocomplete="off">
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="py-3">
+            <h5>Or search it by muscles group</h5>
+        </div>
+
+        <div class="row">
+
+            <div class="py-2">
+                <div class="row justify-content-between pb-5">
+                    <div class="col-lg-2 border-hover">
+                        <form action="/result-gym">
+                            <div>
+                                <input type="hidden" name="bodygroup" value="back">
+                                <button type="submit" class="ignore-button-styles" style="height: 0% !important;">
+                                    <img class="body-groups-icon " src="/static/images/back.png" alt="">
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-lg-2 border-hover">
+                        <form action="/result-gym">
+                            <div>
+                                <input type="hidden" name="bodygroup" value="chest">
+                                <button type="submit" class="ignore-button-styles" style="height: 0% !important;">
+                                    <img class="body-groups-icon " src="/static/images/chest.png" alt="">
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-lg-2 border-hover">
+                        <form action="/result-gym">
+                            <div>
+                                <input type="hidden" name="bodygroup" value="shoulders">
+                                <button type="submit" class="ignore-button-styles" style="height: 0% !important;">
+                                    <img class="body-groups-icon " src="/static/images/shoulder.png" alt="">
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-lg-2 border-hover">
+                        <form action="/result-gym">
+                            <div>
+                                <input type="hidden" name="bodygroup" value="neck">
+                                <button type="submit" class="ignore-button-styles" style="height: 0% !important;">
+                                    <img class="body-groups-icon " src="/static/images/neck.png" alt="">
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="row justify-content-between pt-5 pb-5">
+                    <div class="col-lg-2 border-hover">
+                        <form action="/result-gym">
+                            <div>
+                                <input type="hidden" name="bodygroup" value="lower arms">
+                                <button type="submit" class="ignore-button-styles" style="height: 0% !important;">
+                                    <img class="body-groups-icon " src="/static/images/lowerarms.png" alt="">
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-lg-2 border-hover">
+                        <form action="/result-gym">
+                            <div>
+                                <input type="hidden" name="bodygroup" value="lower legs">
+                                <button type="submit" class="ignore-button-styles" style="height: 0% !important;">
+                                    <img class="body-groups-icon " src="/static/images/lowerlegs.png" alt="">
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-lg-2 border-hover">
+                        <form action="/result-gym">
+                            <div>
+                                <input type="hidden" name="bodygroup" value="upper arms">
+                                <button type="submit" class="ignore-button-styles" style="height: 0% !important;">
+                                    <img class="body-groups-icon " src="/static/images/upperarms.png" alt="">
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-lg-2 border-hover">
+                        <form action="/result-gym">
+                            <div>
+                                <input type="hidden" name="bodygroup" value="upper legs">
+                                <button type="submit" class="ignore-button-styles" style="height: 0% !important;">
+                                    <img class="body-groups-icon " src="/static/images/upperlegs.png" alt="">
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}
+
+{% block script %}
+{% endblock %}

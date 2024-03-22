@@ -9,16 +9,16 @@ Result
 <div class="div container-lg py-2 px-5 mt-3 fade-in-up">
     {% if recipes_list %}
     <div class="my-3 text-left">
-        <h5>
+        <h4>
             Recipes
             {% if readable_ingredients %}
-            containing {{ readable_ingredients }}
+            containing <bold style="color: rgb(231, 19, 19);">{{ readable_ingredients }}</bold>
             {% endif %}
             that match your requirements:
-        </h5>
+        </h4>
     </div>
     {% endif %}
-    
+
 
     <div class="form-result p-5">
 
@@ -46,27 +46,27 @@ Result
                     <small class="lh-1 text-uppercase d-flex flex-wrap">
 
                         {% for dish in recipe['dishType'] %}
-                            {% if dish in dish_list%}
-                                <small class="fw-4 p-2 mb-1 me-1 form-result">{{ dish }}</small>
-                            {% endif%}
+                        {% if dish in dish_list%}
+                        <small class="fw-4 p-2 mb-1 me-1 form-result">{{ dish }}</small>
+                        {% endif%}
                         {% endfor %}
-                        
+
                         {% if diet_list %}
-                            {% for diet in diet_list %}
-                                <small class="fw-4 p-2 mb-1 me-1 form-result">{{ diet }}</small>
-                            {% endfor %}
+                        {% for diet in diet_list %}
+                        <small class="fw-4 p-2 mb-1 me-1 form-result">{{ diet }}</small>
+                        {% endfor %}
                         {% endif %}
 
                         {% if health_list %}
-                            {% for health in health_list %}
-                                <small class="fw-4 p-2 mb-1 me-1 form-result">{{ health }}</small>
-                            {% endfor %}
+                        {% for health in health_list %}
+                        <small class="fw-4 p-2 mb-1 me-1 form-result">{{ health }}</small>
+                        {% endfor %}
                         {% endif %}
-                        
+
                         {% for cuisine in recipe['cuisineType'] %}
-                            {% if cuisine in cuisine_list %}
-                                <small class="fw-4 p-2 mb-1 me-1 form-result">{{ cuisine }}</small>
-                            {% endif %}
+                        {% if cuisine in cuisine_list %}
+                        <small class="fw-4 p-2 mb-1 me-1 form-result">{{ cuisine }}</small>
+                        {% endif %}
                         {% endfor %}
                     </small>
                 </div>
@@ -75,7 +75,7 @@ Result
             <div class="modal" id="recipe{{ loop.index }}">
                 <div class="modal-dialog modal-dialog-centered modal-lg">
                     <div class="modal-content">
-                       
+
                         <div class="modal-body py-5 px-lg-5 px-sm-4">
 
                             <div class="row mb-3">
@@ -85,43 +85,44 @@ Result
                                     <div class="mb-3 d-flex justify-content-center">
                                         <img src="{{ recipe['image'] }}" alt="{{ recipe['label'] }}">
                                     </div>
-    
+
                                     <div class="small mb-4 lh-lg d-flex flex-wrap justify-content-between">
-        
+
                                         <small style="font-size: small;" class="fw-bold">
-                                            <span class="bi bi-stopwatch" ></span>
-                       
+                                            <span class="bi bi-stopwatch"></span>
+
                                             {% if recipe['totalTime']|float > 0.0 %}
-                                            <span >{{ (recipe['totalTime'])|int }} min.</span>
+                                            <span>{{ (recipe['totalTime'])|int }} min.</span>
                                             {% else %}
                                             No data.
                                             {% endif %}
                                         </small>
-                    
+
                                         <small>
                                             <span class="bi bi-fire"></span>
-                                            <span style="font-size: small;" class="fw-bold">{{ (recipe['calories'])|int }} cal.</span>
+                                            <span style="font-size: small;" class="fw-bold">{{ (recipe['calories'])|int
+                                                }} cal.</span>
                                         </small>
                                     </div>
-             
+
                                     <div class="mb-3 text-center">
                                         <a href="{{ recipe['url'] }}" target=”_blank”><button type="button"
                                                 class=" yellow px-5 btn btn-primary">View Full Recipe <span
                                                     class="bi bi-box-arrow-up-right"></span></button></a>
                                     </div>
                                 </div>
-               
+
                                 <div class="col px-4">
-                                
+
                                     <div class="h3 pb-2 lh-sm text-capitalize fw-bold">{{ recipe['label'] }}</div>
-                       
+
                                     <div class="small mb-3">
                                         By
                                         <a href="{{ recipe['url'] }}" target=”_blank”>
                                             <span>{{ recipe['source'] }}</span>
                                         </a>
                                     </div>
-                               
+
                                     <div class="mb-3">
                                         <div class="lh-sm text-muted mb-2">Ingredients:</div>
                                         <small class="lh-2 text-lowercase">
@@ -132,10 +133,10 @@ Result
                                             </ul>
                                         </small>
                                     </div>
-    
+
                                 </div>
                             </div>
-                           
+
                             <div class="row mb-3 px-4">
                                 <div class="col-12 px-0">
                                     <div class="lh-base text-muted py-2">Show Tags
@@ -143,7 +144,7 @@ Result
                                             class="toggler small text-muted ms-2 bi bi-chevron-down"></a>
                                     </div>
                                     <div class="mb-4 py-2 border-top border-bottom hide">
-                                        
+
                                         <div class="mb-1">
                                             <div class="lh-base small text-muted">Dish Type:</div>
                                             <small class="ps-2 lh-1 text-uppercase d-flex flex-wrap">
@@ -154,7 +155,7 @@ Result
                                                 {% endfor %}
                                             </small>
                                         </div>
-                                    
+
                                         <div class="mb-1">
                                             <div class="lh-sm small text-muted">Diet Type:</div>
                                             <small class="ps-2 lh-1 text-uppercase d-flex flex-wrap">
@@ -163,7 +164,7 @@ Result
                                                 {% endfor %}
                                             </small>
                                         </div>
-                                      
+
                                         <div class="mb-1">
                                             <div class="lh-sm small text-muted">Allergy / Restriction:</div>
                                             <small class="ps-2 lh-1 text-uppercase d-flex flex-wrap">
@@ -172,7 +173,7 @@ Result
                                                 {% endfor %}
                                             </small>
                                         </div>
-                                     
+
                                         <div class="mb-1">
                                             <div class="lh-sm small text-muted">Cuisine Type:</div>
                                             <small class="ps-2 lh-1 text-uppercase d-flex flex-wrap">
@@ -184,7 +185,7 @@ Result
                                     </div>
                                 </div>
                             </div>
-                            
+
                             <form action="/add" method="POST">
                                 <div class="row center">
                                     <div>
@@ -195,19 +196,19 @@ Result
                                         <input type="hidden" name="url" value="{{ recipe['url'] }}">
                                         <input type="hidden" name="dietLabels" value="{{ recipe['dietLabels'] }}">
                                         <input type="hidden" name="healthLabels" value="{{ recipe['healthLabels'] }}">
-                                        <input type="hidden" name="ingredientLines" value="{{ recipe['ingredientLines'] }}">
+                                        <input type="hidden" name="ingredientLines"
+                                            value="{{ recipe['ingredientLines'] }}">
                                         <input type="hidden" name="calories" value="{{ recipe['calories'] }}">
                                         <input type="hidden" name="totalTime" value="{{ recipe['totalTime'] }}">
                                         <input type="hidden" name="cuisineType" value="{{ recipe['cuisineType'] }}">
                                         <input type="hidden" name="dishType" value="{{ recipe['dishType'] }}">
                                     </div>
                                     <div class="col text-center">
-                                        <input type="submit" name="bookmark" id="bookmark" value="Bookmark" class="px-5 btn btn-primary" 
-                                        {% if recipe['link'] not in saved_recipes_list %}
-                                            onClick="this.form.submit(); this.disabled=true; this.value='Bookmarked';" {%
-                                        else %} 
-                                            disabled="disabled"
-                                        {%endif %} />
+                                        <input type="submit" name="bookmark" id="bookmark" value="Bookmark"
+                                            class="px-5 btn btn-danger" {% if recipe['link'] not in saved_recipes_list
+                                            %}
+                                            onClick="this.form.submit(); this.disabled=true; this.value='Bookmarked';"
+                                            {% else %} disabled="disabled" {%endif %} />
                                     </div>
                                 </div>
                             </form>

@@ -1,0 +1,53 @@
+{% extends 'layout.html'%}
+
+{% block title %}
+History
+{% endblock title %}
+
+{% block main %}
+
+<div class="container-lg py-2 px-5 mt-3 fade-in-up">
+    <div class="my-4 text-left">
+        <h3>History
+            <span class="noto-fire">⏳</span>
+        </h3>
+    </div>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Food Name</th>
+                <th scope="col">Quantity/Serving</th>
+                <th scope="col">Calories</th>
+                <th scope="col">Protein</th>
+                <th scope="col">Carbohydrates</th>
+                <th scope="col">Fats</th>
+                <th scope="col">Meal Time</th>
+                <th scope="col">Date</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for data in datas %}
+            <tr>
+                <td>{{ data.food_name }}</td>
+                <td>{{ data.quantity_food }}</td>
+                <td>{{ data.calories }}kcal</td>
+                <td>{{ data.protein }}g</td>
+                <td>{{ data.carbohydrates }}g</td>
+                <td>{{ data.fats }}g</td>
+                <td>{{ data.meal_time }}</td>
+                <td>{{ data.food_date }}</td>
+                <td>
+                    <form action="/delete/{{ data.id }}" method="post">
+                        <button class="btn btn-outline-danger btn-sm delete"
+                            onclick="return confirm('are you sure?')">Delete</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% endblock main %}

@@ -1,0 +1,86 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+Tracker
+{% endblock title %}
+
+{% block main %}
+
+<div class="container-lg py-2 px-5 mt-3 fade-in-up">
+
+    <div class="my-4 text-left">
+        <h3 class="pt-2">
+            Keep your eating on track throughout the day
+            <span class="noto-fire">🛤️</span>
+        </h3>
+    </div>
+
+    <div class="form-recipe p-5">
+        <form action="/intake-tracker" method="POST" autocomplete="off">
+
+            <div class="mb-3">
+                <h5>Find nutritional information on Food Data Central before taking notes <a
+                        href="https://fdc.nal.usda.gov/" role="button" target="_blank"><u>here</u></a>!</h5>
+
+            </div>
+            <hr>
+
+            <div class="mb-3 fw-bold">
+                <label for="foodName" class="form-label">Food Name</label>
+                <input type="text" class="form-control" id="foodName" name="foodName" placeholder="Enter Food Name"
+                    autofocus required>
+            </div>
+
+
+            <div class="mb-3 fw-bold">
+                <label for="quantityFood" class="form-label">Quantity/Serving</label>
+                <input type="number" class="form-control" id="quantityFood" name="quantityFood"
+                    placeholder="Enter Quantity/Serving" required>
+            </div>
+
+
+            <div class="mb-3">
+                <label class="form-label fw-bold">Nutrition Details</label>
+                <div class="row g-3">
+                    <div class="col-sm-3">
+                        <label for="calories" class="form-label">Calories(kcal)</label>
+                        <input type="number" step="0.1" min="0" class="form-control" id="calories" name="calories"
+                            placeholder="Enter Calories" required>
+                    </div>
+                    <div class="col-sm-3">
+                        <label for="protein" class="form-label">Protein(g)</label>
+                        <input type="number" step="0.1" min="0" class="form-control" id="protein" name="protein"
+                            placeholder="Enter Protein" required>
+                    </div>
+                    <div class="col-sm-3">
+                        <label for="carbs" class="form-label">Carbohydrates(g)</label>
+                        <input type="number" step="0.1" min="0" class="form-control" id="carbs" name="carbs"
+                            placeholder="Enter Carbohydrates" required>
+                    </div>
+                    <div class="col-sm-3">
+                        <label for="fats" class="form-label">Fats(g)</label>
+                        <input type="number" step="0.1" min="0" class="form-control" id="fats" name="fats"
+                            placeholder="Enter Fats" required>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="mealTime" class="form-label fw-bold">Meal Time</label>
+                <select class="form-select" id="mealTime" name="mealTime" required>
+                    <option selected disabled>Select meal time...</option>
+                    <option value="Breakfast">Breakfast</option>
+                    <option value="Lunch">Lunch</option>
+                    <option value="Dinner">Dinner</option>
+                    <option value="Snack">Snack</option>
+                </select>
+            </div>
+
+            <input type="submit" class="btn btn-danger px-4" value="Save">
+
+        </form>
+    </div>
+
+</div>
+
+{% endblock main %}

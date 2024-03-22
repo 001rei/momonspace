@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
     <!--meta-->
@@ -25,50 +26,102 @@
     <!--edamam-->
     <script src="https://developer.edamam.com/attribution/badge.js"></script>
 
+    <!--footer css api-->
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+    
     <!--title-->
-    <title>Dietary | {% block title  %}{% endblock  %}</title>
+    <title>MomonSpace | {% block title %}{% endblock %}</title>
+
+    <!--website logo-->
+    <link rel="icon" href="/static/images/logo.png">
 
 </head>
 
 <body>
-    
+
     <!-- Header -->
     <header>
         <nav class="navbar navbar-expand-md">
             <div class="container-lg py-2">
                 <a href="/" class="navbar-title">
-                    <span class="title">Dietary</span>
+                    <span class="title">MomonSpace</span>
                 </a>
-            
-                <button aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler"
-                    data-bs-target="#navbar" data-bs-toggle="collapse" type="button" style="background:white!important;">
+
+                <button aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation"
+                    class="navbar-toggler" data-bs-target="#navbar" data-bs-toggle="collapse" type="button"
+                    style="background:white!important;">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-            
+
                 <div class="collapse navbar-collapse" id="navbar">
                     <ul class="navbar-nav ms-auto mt-2">
                         {% if not session["user_id"] %}
                         <li class="nav-item px-2 {% if request.path == url_for('login') %}active-link{% endif %}">
-                            <a class="nav-link fw-bold" href="{{ url_for('login') }}">Login</a>
+                            <a class="nav-link " href="{{ url_for('login') }}">Login</a>
                         </li>
                         <li class="nav-item px-2 {% if request.path == url_for('register') %}active-link{% endif %}">
-                            <a class="nav-link fw-bold" href="{{ url_for('register') }}">Register</a>
+                            <a class="nav-link " href="{{ url_for('register') }}">Register</a>
                         </li>
                         {% else %}
-                        <li class="nav-item px-2 {% if request.path == url_for('recipe') %}active-link{% endif %}">
-                            <a class="nav-link fw-bold" href="{{ url_for('recipe') }}">Recipe</a>
+
+                        <li class="nav-item px-2 {% if request.path == url_for('progress') %}active-link{% endif %}">
+                            <a class="nav-link " href="{{ url_for('progress') }}">Progress</a>
                         </li>
-                        <li class="nav-item px-2 {% if request.path == url_for('bookmarks') %}active-link{% endif %}">
-                            <a class="nav-link fw-bold" href="{{ url_for('bookmarks') }}">Bookmark</a>
+
+                        <li class="nav-item px-2 {% if request.path == url_for('gym_guide') %}active-link{% endif %}">
+                            <a class="nav-link " href="{{ url_for('gym_guide') }}">Guide</a>
                         </li>
-                        <li class="nav-item px-2 {% if request.path == url_for('guide') %}active-link{% endif %}">
-                            <a class="nav-link fw-bold" href="{{ url_for('guide') }}">Diet Guide</a>
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                Dietary
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li
+                                    class="nav-item px-2 {% if request.path == url_for('recipe') %}active-link{% endif %}">
+                                    <a class="nav-link " href="{{ url_for('recipe') }}">Recipe</a>
+                                </li>
+                                <li
+                                    class="nav-item px-2 {% if request.path == url_for('bookmarks') %}active-link{% endif %}">
+                                    <a class="nav-link " href="{{ url_for('bookmarks') }}">Bookmark</a>
+                                </li>
+
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+
+                                <li
+                                    class="nav-item px-2 {% if request.path == url_for('intake_tracker') %}active-link{% endif %}">
+                                    <a class="nav-link " href="{{ url_for('intake_tracker') }}">Intake Tracker</a>
+                                </li>
+
+                                <li
+                                    class="nav-item px-2 {% if request.path == url_for('intake_history') %}active-link{% endif %}">
+                                    <a class="nav-link " href="{{ url_for('intake_history') }}">Intake History</a>
+                                </li>
+
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+
+                                <li
+                                    class="nav-item px-2 {% if request.path == url_for('guide') %}active-link{% endif %}">
+                                    <a class="nav-link " href="{{ url_for('guide') }}">Diet Guide</a>
+                                </li>
+                                <li
+                                    class="nav-item px-2 {% if request.path == url_for('weightcheck') %}active-link{% endif %}">
+                                    <a class="nav-link " href="{{ url_for('weightcheck') }}">Weight Check</a>
+                                </li>
+                                <li
+                                    class="nav-item px-2 {% if request.path == url_for('calorieneeds') %}active-link{% endif %}">
+                                    <a class="nav-link " href="{{ url_for('calorieneeds') }}">Calorie Needs</a>
+                                </li>
+                            </ul>
                         </li>
-                        <li class="nav-item px-2 {% if request.path == url_for('weightcheck') %}active-link{% endif %}">
-                            <a class="nav-link fw-bold" href="{{ url_for('weightcheck') }}">Weight Check</a>
-                        </li>
+
                         <li class="nav-item px-2 {% if request.path == url_for('settings') %}active-link{% endif %}">
-                            <a class="nav-link fw-bold" href="{{ url_for('settings') }}">Settings</a>
+                            <a class="nav-link" href="{{ url_for('settings') }}">Settings</a>
                         </li>
                         <li class="nav-item px-2">
                             <a class="nav-link bi bi-box-arrow-left" title="Log Out" href="{{ url_for('logout') }}"></a>
@@ -83,43 +136,136 @@
 
     <!-- Main -->
     <main class="container">
-        {% block main  %}    {% endblock  %}
+        {% block main %} {% endblock %}
     </main>
 
     <!-- Footer -->
     <hr>
     <footer>
         {% if session["user_id"] %}
-            <div id="edamam-badge" class="text-center" data-color="badge"></div>
-            <div class="container-lg pt-2 pb-5">
-                <div class="footer-info text-center">
-                    <h3 class="footer-title">Dietary</h3>
-                    <p class="footer-info-1">Terms of Service &ensp; Privacy and Policy</p>
-                    <p class="footer-info-2">&#169; 2023 &ensp; Dietary</p>
+        <footer class="footer_area section_padding_130_0">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 col-sm-6 col-lg-4">
+                        <div class="single-footer-widget section_padding_0_130">
+                            <div class="footer-logo mb-3">
+                                <img class="logo align-items-center" src="/static/images/logo.png">
+                            </div>
+                            <p>Cultivating a vibrant and supportive community since 2014, fostering growth, connections,
+                                and wellness for all
+                                who walk through our doors.</p>
+                            <div class="copywrite-text mb-5">
+                            </div>
+                            <div class="footer_social_area"><a href="#" data-toggle="tooltip" data-placement="top"
+                                    title="" data-original-title="Facebook"><i class="fa fa-facebook"></i></a><a
+                                    href="#" data-toggle="tooltip" data-placement="top" title=""
+                                    data-original-title="Pinterest"><i class="fa fa-pinterest"></i></a><a href="#"
+                                    data-toggle="tooltip" data-placement="top" title="" data-original-title="Skype"><i
+                                        class="fa fa-skype"></i></a><a href="#" data-toggle="tooltip"
+                                    data-placement="top" title="" data-original-title="Twitter"><i
+                                        class="fa fa-twitter"></i></a></div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-lg">
+                        <div class="single-footer-widget section_padding_0_130">
+                            <h5 class="widget-title">About</h5>
+                            <div class="footer_menu">
+                                <ul>
+                                    <li><a href="{{ url_for('index') }}#about">About Us</a></li>
+                                </ul>
+                                <ul>
+                                    <li><a href="{{ url_for('index') }}#features">Offered Features</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-lg">
+                        <div class="single-footer-widget section_padding_0_130">
+                            <h5 class="widget-title">Address</h5>
+                            <div class="footer_menu">
+                                <p>Jl. Tlogo Indah No.40a, Tlogomas, Kec. Lowokwaru, Kota Malang, Jawa Timur 65144</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-lg">
+                        <div class="single-footer-widget section_padding_0_130">
+                            <h5 class="widget-title">Contact</h5>
+                            <div class="footer_menu">
+                                <p>+62 813-3425-6781</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
+        </footer>
         {% else %}
-            <div class="container-lg pt-2 pb-5">
-                <div class="footer-info text-center">
-                    <h3 class="footer-title">Dietary</h3>
-                    <p class="footer-info-1">Terms of Service &ensp; Privacy and Policy</p>
-                    <p class="footer-info-2">&#169; 2023 &ensp; Dietary</p>
+        <footer class="footer_area section_padding_130_0">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 col-sm-6 col-lg-4">
+                        <div class="single-footer-widget section_padding_0_130">
+                            <div class="footer-logo mb-3">
+                                <img class="logo align-items-center" src="/static/images/logo.png">
+                            </div>
+                            <p>Cultivating a vibrant and supportive community since 2014, fostering growth, connections,
+                                and wellness for all
+                                who walk through our doors.</p>
+                            <div class="copywrite-text mb-5">
+                            </div>
+                            <div class="footer_social_area"><a href="#" data-toggle="tooltip" data-placement="top"
+                                    title="" data-original-title="Facebook"><i class="fa fa-facebook"></i></a><a
+                                    href="#" data-toggle="tooltip" data-placement="top" title=""
+                                    data-original-title="Pinterest"><i class="fa fa-pinterest"></i></a><a href="#"
+                                    data-toggle="tooltip" data-placement="top" title="" data-original-title="Skype"><i
+                                        class="fa fa-skype"></i></a><a href="#" data-toggle="tooltip"
+                                    data-placement="top" title="" data-original-title="Twitter"><i
+                                        class="fa fa-twitter"></i></a></div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-lg">
+                        <div class="single-footer-widget section_padding_0_130">
+                            <h5 class="widget-title">About</h5>
+                            <div class="footer_menu">
+                                <ul>
+                                    <li><a href="{{ url_for('index') }}#about">About Us</a></li>
+                                </ul>
+                                <ul>
+                                    <li><a href="{{ url_for('index') }}#features">Offered Features</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-lg">
+                        <div class="single-footer-widget section_padding_0_130">
+                            <h5 class="widget-title">Address</h5>
+                            <div class="footer_menu">
+                                <p>Jl. Tlogo Indah No.40a, Tlogomas, Kec. Lowokwaru, Kota Malang, Jawa Timur 65144</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-lg">
+                        <div class="single-footer-widget section_padding_0_130">
+                            <h5 class="widget-title">Contact</h5>
+                            <div class="footer_menu">
+                                <p>+62 813-3425-6781</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
+        </footer>
         {% endif %}
-        
     </footer>
-    
     <!-- Script -->
     {% block script %}
-        <script>
-            document.addEventListener("DOMContentLoaded", function () {
-                var elementsToAnimate = document.querySelectorAll('.fade-in-up');
-                elementsToAnimate.forEach(function (element) {
-                    element.classList.add('fade-in-up');
-                });
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var elementsToAnimate = document.querySelectorAll('.fade-in-up');
+            elementsToAnimate.forEach(function (element) {
+                element.classList.add('fade-in-up');
             });
-        </script>
+        });
+    </script>
 
     {% endblock %}
 

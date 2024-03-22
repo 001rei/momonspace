@@ -1,12 +1,98 @@
 {% extends 'layout.html' %}
 
 {% block title %}
-    Home
+Home
 {% endblock %}
 
 {% block main %}
-    
-        <div class="container-lg py-2 px-5 mt-3 fade-in-up">
+
+<div class="container-lg py-2 px-5 my-5 fade-in-up">
+    <div class="d-lg-flex py-5 px-2 align-items-center justify-content-between">
+        <div class="col-lg-6">
+            <div class="pt-3 pb-2 py-3">
+                <h1 class="landing-page-1 about-us-content text-start">Discover Your Transformation</h1>
+            </div>
+        </div>
+        <div class="col-lg-4 rounded border-hover">
+            <img class="img-fluid carousel rounded hero-pic" src="/static/images/landing1.jpg">
+        </div>
+    </div>
+    <div class="d-lg-flex py-2 pt-4 pb-5">
+        {% if session["user_id"] %}
+        <a href="{{ url_for('progress') }}" class="btn btn-danger btn-lg link">Get Started</a>
+        {% else %}
+        <a href="{{ url_for('register') }}" class="btn btn-danger btn-lg link">Get Started</a>
+        {% endif %}
+    </div>
+
+    <div class="row" id="features">
+        <div class="pt-5 pb-3">
+            <h3 class="features-header">Offered Features</h3>
+        </div>
+    </div>
+    <div class="row justify-content-between mb-5">
+        <div class="col-lg-3">
+            <div class="pt-2 pb-3 border-hover">
+                <img class=" rounded features-pic" src="/static/images/landing-2.jpg" loading="lazy">
+            </div>
+            <div>
+                <h3>Fitness Progress</h3>
+            </div>
+        </div>
+        <div class="col-lg-3">
+            <div class="pt-2 pb-3 border-hover">
+                <img class=" rounded features-pic" src="/static/images/landing-3.jpg" loading="lazy">
+            </div>
+            <div>
+                <h3>Dietary</h3>
+            </div>
+        </div>
+        <div class="col-lg-3">
+            <div class="pt-2 pb-3 border-hover">
+                <img class=" rounded features-pic" src="/static/images/landing-4.jpg" loading="lazy">
+            </div>
+            <div>
+                <h3>Fitness Guide</h3>
+            </div>
+        </div>
+    </div>
+
+    <div class="row justify-content-evenly " id="about">
+        <div class="col-lg-4">
+            <div class="py-5">
+                <h1 class="landing-page-1 about-us-content">About Us</h1>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="px-5 p-4 about-us rounded">
+                <p class="text-center about-us-content">
+                    Welcome to <strong style="color: var(--black);">Momon Gym</strong>, the premier fitness destination
+                    in Jl. Tlogo Indah. Our mission at <strong style="color: var(--black);">Momon Gym</strong> is to
+                    provide a
+                    holistic approach to health and wellness, empowering individuals to achieve their fitness goals and
+                    lead fulfilling
+                    lives. As part of our commitment to your success, we've launched <strong
+                        style="color: var(--red);">MomonSpace</strong>, the official website of <strong
+                        style="color: var(--black);">Momon Gym</strong>.
+                    <strong style="color: var(--red);">MomonSpace</strong> serves as your ultimate fitness companion,
+                    offering personalized guidance on workouts, nutrition, and
+                    lifestyle choices. Our members can access a wealth of resources, including workout plans, dietary
+                    advice, and expert
+                    tips to support their fitness journey. What sets <strong
+                        style="color: var(--red);">MomonSpace</strong> apart is its intuitive progress tracking feature,
+                    allowing
+                    you to monitor your achievements and celebrate your milestones along the way. Join us at <strong
+                        style="color: var(--black);">Momon Gym</strong> and experience the
+                    transformative power of fitness with <strong style="color: var(--red);">MomonSpace</strong> by your
+                    side.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--
+    <div class="container-lg py-2 px-5 mt-3 fade-in-up">
             <div class="py-3 text-center">
                 <h1 class="fw-bold">Welcome to Dietary<span class="noto-fire">❕</span> </h1>
                 <h6 class="fw-bold">Discover Your Best Health Through Balanced Diet.</h6>
@@ -36,15 +122,11 @@
                 </div>
             </div>
         </div>
+-->
 
 {% endblock %}
 
 
 {% block script %}
-    <script src="/static/js/carousel_index.js"></script>
+<script src="/static/js/carousel_index.js"></script>
 {% endblock %}
-
-
-   
-  
-
