@@ -18,7 +18,7 @@ Progress
     </div>
 
     <div class="row justify-content-between">
-        <div class="col-lg-8">
+        <div class="col-lg-8 pb-4">
             <div class="py-3 px-3 progress-box">
                 <form action="/progress" method="POST" id="progressForm">
                     <div class="row">
@@ -172,16 +172,16 @@ Progress
                     <form action="/set-intake" method="POST">
                         <p class="text-center">What's today's program <span class="noto-fire">❔</span></p>
                         <div class="row justify-content-evenly">
-                            <div class="col-lg-4">
+                            <div class="col-lg-4 pb-2">
                                 <input type="radio" class="btn-check" id="bulking-radio" name="program" value="3500"
                                     onclick="changeLabelColor('bulking-label')">
-                                <label class="btn btn-outline-danger" for="bulking-radio"
+                                <label class="btn btn-outline-danger d-block d-sm-inline-block" for="bulking-radio"
                                     id="bulking-label">Bulking</label>
                             </div>
                             <div class="col-lg-4">
                                 <input type="radio" class="btn-check" id="cutting-radio" name="program" value="1800"
                                     onclick="changeLabelColor('cutting-label')">
-                                <label class="btn btn-outline-danger" for="cutting-radio"
+                                <label class="btn btn-outline-danger d-block d-sm-inline-block" for="cutting-radio"
                                     id="cutting-label">Cutting</label>
                             </div>
                         </div>

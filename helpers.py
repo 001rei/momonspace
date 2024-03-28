@@ -173,66 +173,6 @@ async def lookup_gym(param, method):
         print(e)
         return None
     
-# def lookup_gym(param):
-#     try:
-#         url = f"https://exercisedb.p.rapidapi.com/exercises/bodyPart/{param}"
-#         querystring = {"limit":"20"}
-#         headers = {
-#             "X-RapidAPI-Key": "bd38816a3cmsh5035bc48bf839d3p12dff9jsn49c618ee37b7",
-#             "X-RapidAPI-Host": "exercisedb.p.rapidapi.com"
-#         }
-#         response = requests.get(url, headers=headers, params=querystring)
-#     except requests.RequestException:
-#         return None
-    
-    
-#     try:
-#         result = response.json()
-#         hits_dict = result
-#         gym_list = []
-
-#         for index in hits_dict:
-#             bodyPart = index["bodyPart"]
-#             equipment = index["equipment"]
-#             gifUrl = index["gifUrl"]
-#             name = index["name"]
-#             target = index["target"]
-#             instructions = list(index["instructions"])
-
-#             # jupuk video id per index berdasarkan nama
-#             video_url = "https://youtube-search-and-download.p.rapidapi.com/search"
-#             video_querystring = {"query": name, "type": "v", "sort": "r"}
-#             video_headers = {
-#                 "X-RapidAPI-Key": "bd38816a3cmsh5035bc48bf839d3p12dff9jsn49c618ee37b7",
-#                 "X-RapidAPI-Host": "youtube-search-and-download.p.rapidapi.com"
-#             }
-#             video_response = requests.get(video_url, headers=video_headers, params=video_querystring)
-#             video_result = video_response.json()
-            
-#             videoId = []
-#             if video_result and "contents" in video_result:
-#                 for content in video_result["contents"]:
-#                     videoId.append(content["video"]["videoId"])
-
-#             gym_list.append({
-#                 "bodyPart" : bodyPart,
-#                 "equipment" : equipment,
-#                 "gifUrl" : gifUrl,
-#                 "target" : target,
-#                 "name" : name,
-#                 "instructions" : instructions,
-#                 "videoId": videoId
-#             })
-
-#         # print(gym_list)
-#         return gym_list
-    
-#     except (KeyError, TypeError, ValueError):
-#         return None
-
-# gawe tes
-# param = "lower arms"
-# lookup_gym(param)
 
 
 
