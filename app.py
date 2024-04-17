@@ -1,6 +1,8 @@
 import os
 import pymysql
 import re
+from dotenv import load_dotenv
+load_dotenv()
 
 from flask import Flask, redirect, render_template, request, session, flash
 from flask_session import Session
@@ -17,9 +19,9 @@ app.config["SESSION_TYPE"] = "filesystem"
 Session(app)
 
 
-if not os.environ.get("API_KEY"):
+if not os.getenv("API_KEY_RECIPE"):
     raise RuntimeError("API_KEY not set")
-elif not os.environ.get("API_ID"):
+elif not os.getenv("API_ID_RECIPE"):
     raise RuntimeError("API_ID not set")
 
 

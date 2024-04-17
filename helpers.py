@@ -77,8 +77,8 @@ def toString(form_list, string):
 
 def lookup(param):
     try:
-        api_key = os.environ.get("API_KEY")
-        api_id = os.environ.get("API_ID")
+        api_key = os.getenv("API_KEY_RECIPE")
+        api_id = os.getenv("API_ID_RECIPE")
         response = requests.get(
             f"https://api.edamam.com/api/recipes/v2?type=public&app_id={api_id}&app_key={api_key}&q={param}")
         response.raise_for_status()
@@ -131,17 +131,20 @@ async def fetch_video(session, url, headers, params):
 
 async def lookup_gym(param, method):
     try:
+        rapidapi_key = os.getenv("RAPIDAPI_KEY")
+        exercise_api_host = os.getenv("EXERCISE_API_HOST")
+        video_api_host = os.getenv("VIDEO_API_HOST")
         encoded_param = urllib.parse.quote(param)
         url = f"https://exercisedb.p.rapidapi.com/exercises/{method}/{encoded_param}"
         print(url)
         querystring = {"limit":"15"}
-        headers = {
-            "X-RapidAPI-Key": "bd38816a3cmsh5035bc48bf839d3p12dff9jsn49c618ee37b7",
-            "X-RapidAPI-Host": "exercisedb.p.rapidapi.com"
+        exercise_headers = {
+            "X-RapidAPI-Key": rapidapi_key,
+            "X-RapidAPI-Host": exercise_api_host
         }
         
         async with aiohttp.ClientSession() as session:
-            response = await fetch_exercise(session, url, headers, querystring)
+            response = await fetch_exercise(session, url, exercise_headers, querystring)
             gym_list = []
 
             tasks = []
@@ -150,8 +153,8 @@ async def lookup_gym(param, method):
                 video_url = "https://youtube-search-and-download.p.rapidapi.com/search"
                 video_querystring = {"query": name, "type": "v", "sort": "r"}
                 video_headers = {
-                    "X-RapidAPI-Key": "bd38816a3cmsh5035bc48bf839d3p12dff9jsn49c618ee37b7",
-                    "X-RapidAPI-Host": "youtube-search-and-download.p.rapidapi.com"
+                    "X-RapidAPI-Key": rapidapi_key,
+                    "X-RapidAPI-Host": video_api_host
                 }
                 tasks.append(fetch_video(session, video_url, video_headers, video_querystring))
 
