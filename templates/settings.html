@@ -14,7 +14,7 @@ Settings
 
     <div>
         <div class="row justify-content-between">
-            <div class="col-md-4">
+            <div class="col-md-4 pb-3">
                 <ul class="nav nav-tabs rounded-left" role="tablist">
                     <li class="nav-item col-12" role="presentation">
                         <div {% if active_tab=='name' %} class="p-3 tab-clickable active fw-semibold" {% else %}
@@ -68,7 +68,7 @@ Settings
                                 class="tab-pane fade" {% endif %} id="username" role="tabpanel"
                                 aria-labelledby="v-pills-profile-tab" tabindex="0">
                                 <div class="px-5 py-4">
-                                    <h5 class="py-3">Current Username :</h5>
+                                    <h5 class="py-4">Current Username :</h5>
                                     <h4>{{ username }}</h4>
                                 </div>
                                 <div class="px-5 ">
